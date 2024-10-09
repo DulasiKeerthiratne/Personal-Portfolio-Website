@@ -2,52 +2,99 @@
     font-family: Roboto;
     src: url(/fonts/Roboto-Regular.ttf);
 }
-
 *{
     padding: 0;
     margin: 0;
 }
-
 body{
     background-color: #000000;
     font-family: Roboto;
 }
-
-.navigation-bar{
+#sidebar-active{
+    display: none;
+}
+.close-sidebar-button, .open-sidebar-button{
+    display: none;
+}
+.navigation-link-container{
     display: flex;
     justify-content: space-between;
-    margin: 1.5rem 3rem;
+    margin: 1rem 2.5rem;
 }
-
 .navigation-links{
     display: flex;
-    justify-content: space-between;
-    transition: 0.5s;
-    gap: 3rem;
+    gap: 2rem;
 }
-
 /* attribute selector 1 */
 a[href^= "#"]{
     text-decoration: none;
     color: #ffffff;
     font-size: 1rem;
 }
-
 /* pseudo class selector 1 */
 a:hover{
     color: #AAc4e7;
 }
-
 /* structural selector 1 */
-.navigation-bar div:first-of-type {
+.navigation-link-container div:first-of-type {
     color: #ffffff;
 }
-
-@media (max-width: 600px) {
+@media (max-width: 540px) {
     .navigation-links{
-        gap: 1rem;
-    }
-}
+        gap: 0;
 
-@media (max-width: 500px) {
-}
+        flex-direction: column;
+        align-items: flex-start;
+
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+
+        width: 10rem;
+        height: 100%;
+
+        background-color: #ffffff;
+        box-shadow: -5px 0 5px rgba(225, 225, 225, 0.25); /* transparency 1 */
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+
+        transition: 0.75s ease-out; /* transition 1 */
+    }
+    a[href^= "#"]{
+        text-decoration: none;
+        color: #000000;
+        font-size: 1rem;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    /* structural selector 2 */
+    .navigation-links a:last-of-type {
+        margin-bottom: 10px;
+    }
+    /* pseudo class selector 1 */
+    a:hover{
+        color: #AAc4e7;
+    }
+    .close-sidebar-button{
+        display: block;
+        margin: 5px;
+    }
+    .open-sidebar-button{
+        display: block;
+    }
+    #sidebar-active:checked ~ .navigation-link-container .navigation-links{
+        right: 0;
+    }
+    #sidebar-active:checked ~ #overlay{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+
+        background-color: rgba(225, 225, 225, 0.25); /* transparency 2 */
+        transition: 0.75s ease-out; /* transition 2 */
+    }
+} 
