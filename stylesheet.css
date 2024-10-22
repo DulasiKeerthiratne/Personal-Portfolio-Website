@@ -105,6 +105,163 @@ header{
 
 
 
+/* Homepage styles */
+main{
+    margin-top: 88px;
+    height: 74vh;
+    display: flex;
+    align-content: center;
+    padding: 0 13% 0 9%;
+}
+.home{
+    color: var(--text-color);
+    display: grid;
+    grid-template-columns: 600px 300px;
+    justify-content: space-between;
+}
+.contact-email form{
+    width: 300px;
+    position: relative;
+}
+.home-content h1{
+    font-size: 50px;
+    padding-bottom: 20px;
+    font-family: RobotoBold;
+}
+.home-content h1 mark{
+    background-color: transparent;
+    font-family: inherit;
+    color: inherit;
+}
+.typewriter-container{
+    display: flex;
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--accent-color);
+    padding-bottom: 10px;
+}
+/* specificity: 1 */
+.dynamic-texts li{
+    list-style: none;
+    font-family: monospace;
+    font-size: 25px;
+    letter-spacing: 1px;
+    position: relative;
+}
+.typewriter-container .dynamic-texts{
+    margin-left: 7px;
+    line-height: 31px;
+    height: 31px;
+    overflow: hidden;
+}
+.dynamic-texts li{
+    position: relative;
+    top: 0;
+    animation: slide 20s steps(4) infinite;
+}
+@keyframes slide{
+    100%{
+        top: -128px;
+    }
+}
+/* psuedo element: 1 */
+.dynamic-texts li::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid var(--text-color);
+    left: 0;
+    animation: typing 5s steps(15) infinite;
+    background-color: var(--bg-color);
+}
+@keyframes typing{
+    40%, 60%{
+        left: calc(100%);
+    }
+    100%{
+        left: 0;
+    }
+}
+.home-content p{
+    font-size: 18px;
+    line-height: 24px;
+    text-align: justify;
+    padding-bottom: 20px;
+    width: 500px;
+}
+/* nth child: 1 */
+.contact-email form input:first-child{
+    padding: 14px 130px 14px 15px;
+    border: 2px solid var(--accent-color);
+    border-radius: 30px;
+    outline: none;
+}
+/* nth child: 2 */
+.contact-email form input:last-child{
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    padding: 10px 12px;
+    border-radius: 30px;
+    outline: none;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    font-weight: 900;
+    background-color: var(--accent-color);
+}
+.contact-email form input:last-child:hover{
+    box-sizing: border-box;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    background-color: var(--text-color);
+}
+.contact-socials{
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+.contact-socials svg{
+    fill: var(--accent-color);
+    height: 30px;
+    width: 30px;
+}
+.contact-socials a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.contact-socials a:hover svg{
+    fill: var(--bg-color);
+}
+.contact-socials a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background-color: var(--accent-color);
+    height: 100%;
+    z-index: -10;
+    transition: 0.5s;
+}
+.contact-socials a:hover::before{
+    width: 100%;
+}
+.home img{
+    height: 300px;
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+}
+
+
 
 /* Responsive styles */
 @media (max-width: 1230px){
@@ -172,5 +329,18 @@ header{
 	}
 	.nav-bar a:nth-child(5):hover~.animation{
 		top: 170px;
+	}
+	.home-content h1{
+		width: 400px;
+	}
+	.home-content p{
+		width: 300px;
+		text-align: left;
+	}
+}
+@media (max-height: 625px){
+	.contact-socials{
+		position: static;
+		padding: 20px 0;
 	}
 }
