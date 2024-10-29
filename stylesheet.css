@@ -23,6 +23,14 @@ body{
 
 
 /* Common styles */
+main{
+    margin-top: 88px;
+    height: 74vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 0 13% 0 9%;
+}
 .title{
     font-size: 50px;
     margin-bottom: 32px;
@@ -36,6 +44,54 @@ body{
     text-align: center;
     color: var(--accent-color);
     background-color: transparent;
+}
+.bttn{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    background-color: var(--accent-color);
+    /* background-color: transparent; */
+    border: 3px solid var(--accent-color);
+    border-radius: 12px;
+    font-size: 18px;
+    z-index: 10;
+    overflow: hidden;
+    transition: .5s;
+}
+.bttn a{
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-color);
+    /* color: var(--accent-color); */
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.bttn a::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--bg-color);
+    /* background-color: var(--accent-color); */
+    z-index: -10;
+    transition: .5s;
+}
+.bttn a:hover::before{
+    width: 100%;
+}
+.bttn a:hover{
+    color: var(--accent-color);
+    /* color: var(--bg-color); */
+}
+.bttn{
+    display: inline-block;
 }
 
 
@@ -127,13 +183,6 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 
 
 /* Homepage styles */
-main{
-    margin-top: 88px;
-    height: 74vh;
-    display: flex;
-    align-content: center;
-    padding: 0 13% 0 9%;
-}
 .home{
     color: var(--text-color);
     display: grid;
@@ -285,54 +334,6 @@ main{
 
 /* Aboutpage styles */
 .about{
-    height: 74vh;
-}
-.bttn{
-    position: relative;
-    width: 150px;
-    height: 50px;
-    background-color: var(--accent-color);
-    /* background-color: transparent; */
-    border: 3px solid var(--accent-color);
-    border-radius: 12px;
-    font-size: 18px;
-    z-index: 10;
-    overflow: hidden;
-    transition: .5s;
-}
-.bttn a{
-    position: relative;
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--bg-color);
-    /* color: var(--accent-color); */
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-.bttn a::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--bg-color);
-    /* background-color: var(--accent-color); */
-    z-index: -10;
-    transition: .5s;
-}
-.bttn a:hover::before{
-    width: 100%;
-}
-.bttn a:hover{
-    color: var(--accent-color);
-    /* color: var(--bg-color); */
-}
-.about{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -377,9 +378,80 @@ figure .circle-animation{
     font-size: 18px;
     margin: 15px;
 }
-.bttn{
-    display: inline-block;
+
+
+
+
+/* Projects styles */
+.projects{
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
 }
+.pro-table{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+.pro-heading{
+   font-size: 25px; 
+   margin: 0 0 20px 32px;
+}
+.pro-container{
+    border-left: 3px solid var(--accent-color);
+    padding-left: 32px;
+}
+.pro-row{
+    position: relative;
+    padding: 18px;
+    border: 3px solid var(--accent-color);
+    border-radius: 10px;
+    margin-bottom: 32px;
+    z-index: 10;
+}
+.pro-row::before{
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -48px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+.pro-content .year{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    color: var(--accent-color);
+    padding-bottom: 8px;
+}
+.pro-content h3{
+    font-size: 20px;
+}
+.pro-content p{
+    font-size: 15px;
+    padding-top: 8px;
+}
+.pro-content::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0;
+    height: 100%;
+    background-color: rgba(187, 134, 252, 0.2);
+    z-index: -10;
+    transition: .5s;
+}
+.pro-content:hover::before{
+    width: 100%;
+
+}
+
 
 
 
@@ -395,6 +467,7 @@ footer{
     color: var(--text-color);
     border-top: 1px solid var(--text-color);
 }
+
 
 
 
