@@ -22,6 +22,24 @@ body{
 
 
 
+/* Common styles */
+.title{
+    font-size: 50px;
+    margin-bottom: 32px;
+    font-family: RobotoBold;
+    text-align: center;
+}
+.title mark{
+    font-size: 50px;
+    font-family: RobotoBold;
+    margin-bottom: 48px;
+    text-align: center;
+    color: var(--accent-color);
+    background-color: transparent;
+}
+
+
+
 /* Navigation Styles */
 header{
     display: flex;
@@ -35,6 +53,13 @@ header{
     z-index: 100;
 	background-color: var(--bg-color);
 }
+/* Child combinator 1 */
+header > a:first-of-type{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 40px;
+    font-weight: 600;
+}
 .nav-bar{
 	position: relative;
 	border-radius: 8px;
@@ -42,13 +67,8 @@ header{
 	margin-left: auto;
 	display: flex;
 }
-.nav-logo{
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 40px;
-    font-weight: 600;
-}
-.nav-bar a{
+/* Attribute selector 1 */
+.nav-bar a[href^="/"]{
 	font-size: 15px;
 	text-transform: uppercase;
 	color: var(--text-color);
@@ -69,39 +89,40 @@ header{
 	position: absolute;
 	height: 100%;
 	top: 1;
-	z-index: 0;
+	z-index: -10;
 	background: var(--accent-color);
 	border-radius: 8px;
 	transition: all .5s ease 0s;
 }
 .nav-bar a:nth-child(2){
-	width: 100px;
+	width: 104px;
 }
-.nav-bar .active, a:nth-child(2):hover~.animation{
-	width: 100px;
+nav .active-home~.animation, a:nth-child(2):hover~.animation{
+	width: 104px;
 	left: 0;
 }
 .nav-bar a:nth-child(3){
-	width: 110px;
+    width: 112px;
 }
-.nav-bar a:nth-child(3):hover~.animation{
-	width: 110px;
-	left: 100px;
+nav .active-about~.animation, a:nth-child(3):hover~.animation{
+	width: 112px;
+	left: 104px;
 }
 .nav-bar a:nth-child(4){
-	width: 100px;
+    width: 138px
 }
-.nav-bar a:nth-child(4):hover~.animation{
-	width: 100px;
-	left: 210px;
+nav .active-projects~.animation, a:nth-child(4):hover~.animation{
+	width: 138px;
+	left: 216px;
 }
 .nav-bar a:nth-child(5){
-	width: 110px;
+    width: 130px;
 }
-.nav-bar a:nth-child(5):hover~.animation{
-	width: 110px;
-	left: 310px;
+nav .active-contact~.animation, a:nth-child(5):hover~.animation{
+	width: 130px;
+	left: 354px;
 }
+
 
 
 
@@ -119,7 +140,7 @@ main{
     grid-template-columns: 600px 300px;
     justify-content: space-between;
 }
-.contact-email form{
+.home-email form{
     width: 300px;
     position: relative;
 }
@@ -128,12 +149,7 @@ main{
     padding-bottom: 20px;
     font-family: RobotoBold;
 }
-.home-content h1 mark{
-    background-color: transparent;
-    font-family: inherit;
-    color: inherit;
-}
-.typewriter-container{
+.home-typewriter{
     display: flex;
     font-size: 25px;
     font-weight: 900;
@@ -148,7 +164,7 @@ main{
     letter-spacing: 1px;
     position: relative;
 }
-.typewriter-container .dynamic-texts{
+.home-typewriter .dynamic-texts{
     margin-left: 7px;
     line-height: 31px;
     height: 31px;
@@ -164,7 +180,7 @@ main{
         top: -128px;
     }
 }
-/* psuedo element: 1 */
+/* Pseudo element 1 */
 .dynamic-texts li::after{
     content: "";
     position: absolute;
@@ -190,15 +206,15 @@ main{
     padding-bottom: 20px;
     width: 500px;
 }
-/* nth child: 1 */
-.contact-email form input:first-child{
+/* Structural selector 1 */
+.home-email form input:first-child{
     padding: 14px 130px 14px 15px;
     border: 2px solid var(--accent-color);
     border-radius: 30px;
     outline: none;
 }
-/* nth child: 2 */
-.contact-email form input:last-child{
+/* Structural selector 2 */
+.home-email form input:last-child{
     position: absolute;
     top: 4px;
     right: 8px;
@@ -210,24 +226,25 @@ main{
     font-weight: 900;
     background-color: var(--accent-color);
 }
-.contact-email form input:last-child:hover{
+.home-email form input:last-child:hover{
     box-sizing: border-box;
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
     background-color: var(--text-color);
 }
-.contact-socials{
+.home-socials{
     position: absolute;
-    bottom: 20px;
+    bottom: 65px;
     display: flex;
     gap: 20px;
 }
-.contact-socials svg{
+.home-socials svg{
     fill: var(--accent-color);
     height: 30px;
     width: 30px;
 }
-.contact-socials a{
+/* Attribute selector 2 */
+.home-socials a[href^="https"]{
     position: relative;
     display: flex;
     justify-content: center;
@@ -238,10 +255,12 @@ main{
     border-radius: 50%;
     overflow: hidden;
 }
-.contact-socials a:hover svg{
+/* Attribute selector 3 */
+.home-socials a[href^="https"]:hover svg{
     fill: var(--bg-color);
 }
-.contact-socials a::before{
+/* Pseudo element 2 */
+.home-socials a::before{
     content: '';
     position: absolute;
     top: 0;
@@ -252,13 +271,129 @@ main{
     z-index: -10;
     transition: 0.5s;
 }
-.contact-socials a:hover::before{
+/* Pseudo element 3 */
+.home-socials a[href^="https"]:hover::before{
     width: 100%;
 }
-.home img{
+.home-image img{
     height: 300px;
     border: 4px solid var(--accent-color);
     border-radius: 50%;
+}
+
+
+
+/* Aboutpage styles */
+.about{
+    height: 74vh;
+}
+.bttn{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    background-color: var(--accent-color);
+    /* background-color: transparent; */
+    border: 3px solid var(--accent-color);
+    border-radius: 12px;
+    font-size: 18px;
+    z-index: 10;
+    overflow: hidden;
+    transition: .5s;
+}
+.bttn a{
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-color);
+    /* color: var(--accent-color); */
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.bttn a::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--bg-color);
+    /* background-color: var(--accent-color); */
+    z-index: -10;
+    transition: .5s;
+}
+.bttn a:hover::before{
+    width: 100%;
+}
+.bttn a:hover{
+    color: var(--accent-color);
+    /* color: var(--bg-color); */
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    color: var(--text-color);
+}
+figure{
+    position: relative;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-image img{
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--accent-color);
+}
+figure .circle-animation{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    border-top: 3px solid var(--bg-color);
+    border-left: 3px solid var(--accent-color);
+    border-bottom: 3px solid var(--bg-color);
+    border-right: 3px solid var(--accent-color);
+}
+.about-content{
+    text-align: center;
+}
+.about-content h3{
+    font-size: 30px;
+}
+.about-content p{
+    font-size: 18px;
+    margin: 15px;
+}
+.bttn{
+    display: inline-block;
+}
+
+
+
+/* Footer styles */
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    border-top: 1px solid var(--text-color);
 }
 
 
@@ -282,7 +417,7 @@ main{
 		right: -100%;
 		z-index: 10;
         flex-direction: column;
-		padding: 50px 20px 20px 20px;
+		padding: 50px 20px 20px 30px;
 		background-color: var(--accent-color);
 		transition: .75s ease-out;
     }
@@ -294,12 +429,12 @@ main{
 	}
 	.open-sidebar-button{
 		position: absolute;
-		z-index: 0;
+		z-index: -10;
 		display: block;
 		right: 9%;
 		top: 32px;
 	}
-	/* psuedo class: 1*/
+	/* Validity pseudo class 1*/
 	#sidebar-active:checked~.nav-bar{
 		right: 0;
 	}
@@ -313,21 +448,21 @@ main{
 		background: var(--accent-color);
 		border: 2px solid var(--text-color);
 	}
-	.nav-bar .active, a:nth-child(2):hover~.animation,
-	.nav-bar a:nth-child(3):hover~.animation,
-	.nav-bar a:nth-child(4):hover~.animation,
-	.nav-bar a:nth-child(5):hover~.animation{
+    nav .active-home~.animation, a:nth-child(2):hover~.animation,
+	nav .active-about~.animation, a:nth-child(3):hover~.animation,
+	nav .active-projects~.animation, a:nth-child(4):hover~.animation,
+	nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 		height: 36px;
-		left: 20px;
+		left: 40px;
 		top: 50px;
 	}
-	.nav-bar a:nth-child(3):hover~.animation{
+	nav .active-about~.animation, a:nth-child(3):hover~.animation{
 		top: 90px;
 	}
-	.nav-bar a:nth-child(4):hover~.animation{
+	nav .active-projects~.animation, a:nth-child(4):hover~.animation{
 		top: 130px;
 	}
-	.nav-bar a:nth-child(5):hover~.animation{
+	nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 		top: 170px;
 	}
 	.home-content h1{
@@ -339,8 +474,15 @@ main{
 	}
 }
 @media (max-height: 625px){
-	.contact-socials{
+    .home, .about{
+        height: fit-content;
+    }
+	.home-socials{
 		position: static;
 		padding: 20px 0;
 	}
+    footer{
+        position: static;  
+        margin: 20px 0;
+    }
 }
