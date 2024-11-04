@@ -1,28 +1,27 @@
+/* common fonts */
+/* roboto normal */
 @font-face {
     font-family: Roboto;
     src: url(./fonts/Roboto-Regular.ttf);
 }
+
+/* roboto bold */
 @font-face {
     font-family: RobotoBold;
     src: url(./fonts/Roboto-Bold.ttf);
 }
+
+/* common styles */
 *{
     margin: 0;
     padding: 0;
     font-family: Roboto;
 }
-:root{
-    --bg-color: #121212;
-    --text-color: #EAEAEA;
-    --accent-color: #BB86FC;
-}
+
 body{
     background-color: var(--bg-color);
 }
 
-
-
-/* Common styles */
 main{
     margin-top: 88px;
     height: 74vh;
@@ -30,13 +29,17 @@ main{
     flex-direction: column;
     align-content: center;
     padding: 0 13% 0 9%;
+    color: var(--text-color);
 }
-.title{
+
+/* Negation pseudo class */
+.title:not(.title mark){
     font-size: 50px;
     margin-bottom: 32px;
     font-family: RobotoBold;
     text-align: center;
 }
+
 .title mark{
     font-size: 50px;
     font-family: RobotoBold;
@@ -45,6 +48,8 @@ main{
     color: var(--accent-color);
     background-color: transparent;
 }
+
+/* common button styles */
 .bttn-container{
     position: relative;
     width: 150px;
@@ -58,6 +63,7 @@ main{
     overflow: hidden;
     transition: .5s;
 }
+
 .bttn-container .bttn{
     background: none;
     border: none;
@@ -77,6 +83,8 @@ main{
     font-weight: 600;
     letter-spacing: 1px;
 }
+
+/* button style: normal */
 .bttn-container .bttn::before{
     content: "";
     position: absolute;
@@ -89,20 +97,32 @@ main{
     z-index: -10;
     transition: .5s;
 }
+
+/* button style: normal */
 .bttn-container .bttn:hover::before{
     width: 100%;
 }
+
+/* button style: hover */
 .bttn-container .bttn:hover{
     color: var(--accent-color);
     /* color: var(--bg-color); */
 }
+
 .bttn-container{
     display: inline-block;
 }
 
+/* common colors */
+:root{
+    --bg-color: #121212;
+    --text-color: #EAEAEA;
+    --accent-color: #BB86FC;
+}
 
 
-/* Navigation Styles */
+
+/* header styles */
 header{
     display: flex;
     align-items: center;
@@ -115,13 +135,16 @@ header{
     z-index: 100;
 	background-color: var(--bg-color);
 }
+
 /* Child combinator 1 */
+/* logo style */
 header > a:first-of-type{
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--accent-color);
     font-size: 40px;
     font-weight: 600;
 }
+
 .nav-bar{
 	position: relative;
 	border-radius: 8px;
@@ -129,7 +152,9 @@ header > a:first-of-type{
 	margin-left: auto;
 	display: flex;
 }
+
 /* Attribute selector 1 */
+/* nav link style */
 .nav-bar a[href^="/"]{
 	font-size: 15px;
 	text-transform: uppercase;
@@ -141,12 +166,18 @@ header > a:first-of-type{
 	display: inline-block;
 	text-align: center;
 }
+
+/* hiding checkbox used for toggle, when toggle not in use */
 #sidebar-active{
 	display: none;
 }
+
+/* hiding checkbox used for toggle, when toggle not in use */
 .open-sidebar-button, .close-sidebar-button{
 	display: none;
 }
+
+/* navigation bar active/hover animation */
 .nav-bar .animation{
 	position: absolute;
 	height: 100%;
@@ -156,30 +187,40 @@ header > a:first-of-type{
 	border-radius: 8px;
 	transition: all .5s ease 0s;
 }
+
+/* width of nav each nav link */
 .nav-bar a:nth-child(2){
 	width: 104px;
 }
+
+.nav-bar a:nth-child(3){
+    width: 112px;
+}
+
+.nav-bar a:nth-child(4){
+    width: 138px
+}
+
+.nav-bar a:nth-child(5){
+    width: 130px;
+}
+
+/* applyin animation on active/hover for each nav link*/
 nav .active-home~.animation, a:nth-child(2):hover~.animation{
 	width: 104px;
 	left: 0;
 }
-.nav-bar a:nth-child(3){
-    width: 112px;
-}
+
 nav .active-about~.animation, a:nth-child(3):hover~.animation{
 	width: 112px;
 	left: 104px;
 }
-.nav-bar a:nth-child(4){
-    width: 138px
-}
+
 nav .active-projects~.animation, a:nth-child(4):hover~.animation{
 	width: 138px;
 	left: 216px;
 }
-.nav-bar a:nth-child(5){
-    width: 130px;
-}
+
 nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 	width: 130px;
 	left: 354px;
@@ -188,22 +229,26 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 
 
 
-/* Homepage styles */
+/* home page styles */
 .home{
-    color: var(--text-color);
     display: grid;
     grid-template-columns: 600px 300px;
     justify-content: space-between;
 }
-.home-email form{
-    width: 300px;
-    position: relative;
-}
-.home-content h1{
+
+/* home page title styles */
+/* Child combinator 2 */
+.home-content > h1:first-of-type{
     font-size: 50px;
     padding-bottom: 20px;
     font-family: RobotoBold;
+    /* gradient */
+    background: radial-gradient(#BB86FC, #EAEAEA);
+    -webkit-background-clip: text;
+    color: transparent;
 }
+
+/* typewriter styles*/
 .home-typewriter{
     display: flex;
     font-size: 25px;
@@ -211,30 +256,39 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     color: var(--accent-color);
     padding-bottom: 10px;
 }
-/* specificity: 1 */
+
 .dynamic-texts li{
     list-style: none;
-    font-family: monospace;
     font-size: 25px;
     letter-spacing: 1px;
     position: relative;
 }
+
+/* Specificity 1 */
+.home-typewriter .static-text, .dynamic-texts li span{
+    font-family: monospace;
+}
+
 .home-typewriter .dynamic-texts{
-    margin-left: 7px;
+    margin-left: 15px;
     line-height: 31px;
     height: 31px;
     overflow: hidden;
 }
+
 .dynamic-texts li{
     position: relative;
     top: 0;
     animation: slide 20s steps(4) infinite;
 }
+
+/* to only display one word of the ul*/
 @keyframes slide{
     100%{
         top: -128px;
     }
 }
+
 /* Pseudo element 1 */
 .dynamic-texts li::after{
     content: "";
@@ -246,6 +300,8 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     animation: typing 5s steps(15) infinite;
     background-color: var(--bg-color);
 }
+
+/* to give the typing effect */
 @keyframes typing{
     40%, 60%{
         left: calc(100%);
@@ -254,6 +310,7 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
         left: 0;
     }
 }
+
 .home-content p{
     font-size: 18px;
     line-height: 24px;
@@ -261,14 +318,24 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     padding-bottom: 20px;
     width: 500px;
 }
+
+/* email feature styles */
+.home-email form{
+    width: 300px;
+    position: relative;
+}
+
 /* Structural selector 1 */
+/* bigger input style */
 .home-email form input:first-child{
     padding: 14px 130px 14px 15px;
     border: 2px solid var(--accent-color);
     border-radius: 30px;
     outline: none;
 }
+
 /* Structural selector 2 */
+/* smaller input style */
 .home-email form input:last-child{
     position: absolute;
     top: 4px;
@@ -281,23 +348,29 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     font-weight: 900;
     background-color: var(--accent-color);
 }
+
 .home-email form input:last-child:hover{
     box-sizing: border-box;
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
     background-color: var(--text-color);
 }
+
+
+/* socials feature style */
 .home-socials{
     position: absolute;
     bottom: 65px;
     display: flex;
     gap: 20px;
 }
+
 .home-socials svg{
     fill: var(--accent-color);
     height: 30px;
     width: 30px;
 }
+
 /* Attribute selector 2 */
 .home-socials a[href^="https"]{
     position: relative;
@@ -307,14 +380,13 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     width: 48px;
     height: 48px;
     border: 2px solid var(--accent-color);
+    box-shadow: 5px 5px 10px rgba(187, 134, 252, 0.2);
     border-radius: 50%;
     overflow: hidden;
 }
-/* Attribute selector 3 */
-.home-socials a[href^="https"]:hover svg{
-    fill: var(--bg-color);
-}
+
 /* Pseudo element 2 */
+/* to give animation upon hover */
 .home-socials a::before{
     content: '';
     position: absolute;
@@ -326,10 +398,17 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     z-index: -10;
     transition: 0.5s;
 }
+
 /* Pseudo element 3 */
 .home-socials a[href^="https"]:hover::before{
     width: 100%;
 }
+
+/* Attribute selector 3 */
+.home-socials a[href^="https"]:hover svg{
+    fill: var(--bg-color);
+}
+
 .home-image img{
     height: 300px;
     border: 4px solid var(--accent-color);
@@ -338,15 +417,15 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 
 
 
-/* Aboutpage styles */
+/* about page styles */
 .about{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
-    color: var(--text-color);
 }
+
 figure{
     position: relative;
     height: 250px;
@@ -355,12 +434,14 @@ figure{
     justify-content: center;
     align-items: center;
 }
+
 .about-image img{
     width: 200px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--accent-color);
 }
+
 figure .circle-animation{
     position:absolute;
     top: 50%;
@@ -374,12 +455,15 @@ figure .circle-animation{
     border-bottom: 3px solid var(--bg-color);
     border-right: 3px solid var(--accent-color);
 }
+
 .about-content{
     text-align: center;
 }
+
 .about-content h3{
     font-size: 30px;
 }
+
 .about-content p{
     font-size: 18px;
     margin: 15px;
@@ -387,36 +471,44 @@ figure .circle-animation{
 
 
 
-
-/* Projects styles */
+/* projects page styles */
 .projects{
-    color: var(--text-color);
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 80vh;
 }
+
 .pro-table{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
 }
+
+/* colomn style */
 .pro-heading{
    font-size: 25px; 
    margin: 0 0 20px 32px;
 }
+
 .pro-container{
     border-left: 3px solid var(--accent-color);
     padding-left: 32px;
 }
+
+/* row style */
 .pro-row{
     position: relative;
     padding: 18px;
     border: 3px solid var(--accent-color);
+    box-shadow: 3.5px 3.5px 10px rgba(187, 134, 252, 0.2);
+
     border-radius: 10px;
     margin-bottom: 32px;
     z-index: 10;
 }
+
+/* to create the purple points on the left border of each blog/project post */
 .pro-row::before{
     content: "";
     position: absolute;
@@ -427,6 +519,7 @@ figure .circle-animation{
     background-color: var(--accent-color);
     border-radius: 50%;
 }
+
 .pro-content .year{
     display: flex;
     align-items: center;
@@ -435,13 +528,17 @@ figure .circle-animation{
     color: var(--accent-color);
     padding-bottom: 8px;
 }
+
 .pro-content h3{
     font-size: 20px;
 }
+
 .pro-content p{
     font-size: 15px;
     padding-top: 8px;
 }
+
+/* to give animation upon hover */
 .pro-content::before{
     content: "";
     position: absolute;
@@ -453,6 +550,7 @@ figure .circle-animation{
     z-index: -10;
     transition: .5s;
 }
+
 .pro-content:hover::before{
     width: 100%;
 
@@ -460,18 +558,19 @@ figure .circle-animation{
 
 
 
-/* Contact page styles */
+/* contact page styles */
 .contact{
     height: 80vh;
-    color: var(--text-color);
     display: flex;
     align-items: center;
 }
+
 .contact form{
     width: 700px;
     margin: 0 auto;
     text-align: center;
 }
+
 .contact form .input-container{
     width: 100%;
     position: relative;
@@ -479,14 +578,17 @@ figure .circle-animation{
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .contact form .input-container .input-feild{
     position: relative;
     width:47.5%;
     margin-bottom: 35px;
 }
+
 .contact form .textarea-feild{
     position: relative;
 }
+
 .contact form .input-container .input-feild input,
 .contact form .textarea-feild textarea{
     width: 100%;
@@ -497,20 +599,25 @@ figure .circle-animation{
     background-color: transparent;
     border-radius: 5px;
     border: 2px solid var(--accent-color);
+    box-shadow: 3.5px 3.5px 10px rgba(187, 134, 252, 0.2);
     outline: none;
 }
+
 .contact form .textarea-feild textarea{
     height: 200px;
     resize: none;
 }
+
 .contact form .input-container .input-feild input::placeholder,
 .contact form .textarea-feild textarea::placeholder{
     color: var(--text-color);
     padding-left: 10px;
 }
+
 .contact form .textarea-feild textarea::placeholder{
     padding-top: 10px;
 }
+
 .contact form .input-feild .focus, .contact form .textarea-feild .focus{
     position: absolute;
     top: 0px;
@@ -522,24 +629,30 @@ figure .circle-animation{
     transition: .5s;
     background-color: rgba(187, 134, 252, 0.2);
 }
+
 .contact form .textarea-feild .focus{
     height: 98%;
 }
+
+/* to give animation to input box sonce click on/ for valid answer  */
 .contact form .input-container .input-feild input:focus~.focus,
 .contact form .input-container .input-feild input:valid~.focus{
     width: 105%;
 }
+
+/* to give animation to textarea sonce click on/ for valid answer  */
 .contact form .textarea-feild textarea:focus~.focus,
 .contact form .textarea-feild textarea:valid~.focus{
     width: 102.5%;
 }
+
 .contact .bttn-container{
     margin-top: 15px;
 }
 
 
 
-/* Footer styles */
+/* footer styles */
 footer{
     position: absolute;
     bottom: 0;
@@ -555,13 +668,17 @@ footer{
 
 
 
-/* Responsive styles */
+/* responsive styles */
 @media (max-width: 1230px){
+
+    /* make home body cone colomn */
     .home{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column-reverse; 
         gap: 40px;
     }
+
+    /* make home image smaller */
     .home-image img{
         height: 230px;
         border: 4px solid var(--accent-color);
@@ -579,7 +696,9 @@ footer{
         margin: 20px 0;
     }
 }
+
 @media (max-width: 740px) {
+    /* toggle styles */
 	header{
 		align-items: start;
 		height: 90px;
@@ -607,6 +726,7 @@ footer{
 		top: 32px;
 	}
 	/* Validity pseudo class 1*/
+    /* to open and clase toggle */
 	#sidebar-active:checked~.nav-bar{
 		right: 0;
 	}
@@ -650,6 +770,7 @@ footer{
         gap: 30px;
     }
 }
+
 @media (max-height: 625px){
     .home, .about{
         height: fit-content;
