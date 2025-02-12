@@ -236,14 +236,11 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
 
 /* home page title styles */
 /* Child combinator 2 */
-.home-content > h1:first-of-type{
+.home-content > h1:first-of-type {
     font-size: 50px;
     padding-bottom: 20px;
     font-family: RobotoBold;
-    /* gradient */
-    background: radial-gradient(#BB86FC, #EAEAEA);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--accent-color);
 }
 
 /* typewriter styles*/
@@ -368,7 +365,7 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     width: 30px;
 }
 
-.home-socials a[href^="https"]{
+.home-socials a[href^="https"] {
     position: relative;
     display: flex;
     justify-content: center;
@@ -376,7 +373,8 @@ nav .active-contact~.animation, a:nth-child(5):hover~.animation{
     width: 48px;
     height: 48px;
     border: 2px solid var(--accent-color);
-    box-shadow: 5px 5px 10px rgba(187, 134, 252, 0.2);
+    /* Remove the box-shadow property below */
+    /* box-shadow: 5px 5px 10px rgba(187, 134, 252, 0.2); */
     border-radius: 50%;
     overflow: hidden;
 }
@@ -467,9 +465,7 @@ figure .circle-animation{
 
 .about-content h3{
     font-size: 30px;
-    background: radial-gradient(#BB86FC, #EAEAEA);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--accent-color);
 }
 
 .about-content p{
